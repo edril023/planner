@@ -1,0 +1,76 @@
+<WhiteSquare>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20]
+
+FloatLayout:
+    Image:
+        source: "fundo3.jpeg"
+        size_hint: None, None
+        size: 700, 1000
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+    WhiteSquare:
+        size_hint: None, None
+        size: 320, 270
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        FloatLayout:
+            size_hint: None, None
+            size: 350, 300
+
+            TextInput:
+                id: altura_input
+                hint_text: "email ou nome de usuario"
+                font_size: 16
+                multiline: False
+                size_hint: None, None
+                size: 280, 40
+                foreground_color: 0, 0, 0, 1
+                cursor_color: 1, 1, 0, 1
+                background_color: 1, 0.8, 0.6, 1
+                pos_hint: {'center_x': 0.64, 'center_y': 1.4}
+
+            TextInput:
+                id: peso_input
+                hint_text: "senha"
+                font_size: 16
+                multiline: False
+                password: True
+                size_hint: None, None
+                size: 280, 40
+                foreground_color: 0, 0, 0, 1
+                cursor_color: 1, 1, 0, 1
+                background_color: 1, 0.8, 0.6, 1
+                pos_hint: {'center_x': 0.64, 'center_y': 1.2}
+
+            ImageButton:
+                id: toggle_button
+                source: 'fechado.png'
+                size_hint: None, None
+                size: 25, 25
+                pos_hint: {'center_x': 0.97, 'center_y': 1.2}
+                on_press: app.toggle_password_visibility()
+
+            Button:
+                id: submit_button
+                text: "login"
+                size_hint: None, None
+                size: 150, 40
+                color: 0.5, 0.5, 0.5, 1
+                background_color: 1, 0.8, 0.6, 1
+                pos_hint: {'center_x': 0.83, 'center_y': 0.9}
+
+            ClickableLabel:
+                id: forgot_password_label
+                text: "Esqueci minha senha"
+                size_hint: None, None
+                size: 150, 20
+                pos_hint: {'center_x': 0.40, 'center_y': 0.9}
+                color: 1, 0.65, 0.4
+                font_size: 13
+                on_press: app.forgot_password()

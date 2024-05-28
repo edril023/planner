@@ -1,0 +1,97 @@
+#:import monthrange calendar.monthrange
+
+<WhiteSquareLabel>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [10]
+
+<CalendarScreen>:
+    FloatLayout:
+        # Set the background color to pastel pink
+        canvas.before:
+            Color:
+                rgba: 1, 0.87, 0.87, 1  # Rosa Pastel
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        WhiteSquareLabel:
+            size_hint: None, None
+            size: 340, 60
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+
+        Label:
+            id: month_label
+            text: "Selecione um mês"
+            size_hint: None, None
+            size: 200, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            color: 0, 0, 0, 1
+            font_size: '20sp'
+
+        Button:
+            text: 'Escolher Mês'
+            size_hint: None, None
+            size: 150, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+            background_color: 0, 0, 0, 1  # Black color for background
+            color: 1, 1, 1, 1  # White color for text
+            on_release: root.open_month_dropdown(self)
+
+        GridLayout:
+            id: days_layout
+            cols: 7
+            spacing: 5
+            size_hint: None, None
+            size: 350, 300
+            pos_hint: {'center_x': 0.56, 'center_y': 0.4}
+            opacity: 0  # Initially hide the days layout
+
+<PlannerScreen>:
+    FloatLayout:
+        # Set the background color to pastel pink
+        canvas.before:
+            Color:
+                rgba: 1, 0.87, 0.87, 1  # Rosa Pastel
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            id: planner_label
+            text: "Metas do Dia"
+            size_hint: None, None
+            size: 200, 40
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            color: 0, 0, 0, 1
+            font_size: '20sp'
+
+        TextInput:
+            id: text_input
+            hint_text: "Adicione suas metas aqui..."
+            size_hint: None, None
+            size: 300, 200
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            background_color: 1, 1, 1, 1  # White color for background
+
+        Button:
+            text: "Salvar"
+            size_hint: None, None
+            size: 100, 40
+            pos_hint: {'center_x': 0.3, 'center_y': 0.15}
+            background_color: 0, 0, 0, 1  # Black color for background
+            color: 1, 1, 1, 1  # White color for text
+            on_release: root.save_goals(self)
+
+        Button:
+            text: "Voltar"
+            size_hint: None, None
+            size: 100, 40
+            pos_hint: {'center_x': 0.7, 'center_y': 0.15}
+            background_color: 0, 0, 0, 1  # Black color for background
+            color: 1, 1, 1, 1  # White color for text
+            on_release: root.go_back(self)
